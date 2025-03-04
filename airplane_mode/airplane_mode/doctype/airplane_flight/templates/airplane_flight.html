@@ -1,0 +1,18 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="card mb-3">
+    <div class="card-header bg-primary text-white">
+        <h2 class="card-title">{{ doc.airplane }}</h2>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Flight Details</h3>
+        <p class="card-text">Airline: {{ doc.airplane }}</p>
+        <p class="card-text">Route: {{ doc.source_airport }} - {{ doc.destination_airport }}</p>
+        <p class="card-text">Code: {{ doc.source_airport_code }} - {{ doc.destination_airport_code }}</p>
+        <p class="card-text">Date / Time of Departure: {{ frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY") }} at {{ doc.time_of_departure }}</p>
+        <p class="card-text">Duration: {{ frappe.utils.format_duration(doc.duration) }}</p>
+        <a href="/flight-ticket-web-form?flight={{ doc.name }}" class="btn btn-primary">Book Flight</a>
+    </div>
+</div>
+{% endblock %}

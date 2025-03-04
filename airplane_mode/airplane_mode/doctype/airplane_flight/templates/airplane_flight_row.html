@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">{{ doc.airplane }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+						<strong>{{ doc.airplane }}</strong><br>
+						<strong>{{ doc.source_airport }} - {{ doc.destination_airport }}</strong><br>
+                        <strong>{{ doc.source_airport_code }} - {{ doc.destination_airport_code }}</strong><br>
+                        Departure: {{ frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY") }} at {{ doc.time_of_departure }}<br>
+                        Duration: {{ frappe.utils.format_duration(doc.duration) }}
+                    </p>
+                    <a href="/{{ doc.route }}" class="btn btn-outline-primary btn-block">View Flight</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
