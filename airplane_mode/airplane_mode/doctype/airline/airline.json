@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "founding_year",
+  "website",
   "column_break_njpz",
   "headquarters",
   "customer_care_number"
@@ -37,6 +38,12 @@
   {
    "fieldname": "column_break_njpz",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -46,7 +53,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2025-02-19 17:25:34.932291",
+ "modified": "2025-03-06 10:17:49.948583",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airline",

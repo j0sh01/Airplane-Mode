@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:[naming_series]",
+ "creation": "2025-03-13 09:29:58.290981",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "shop_name",
+  "shop_number",
+  "airport",
+  "column_break_ekku",
+  "area_sqft",
+  "status",
+  "airport_code",
+  "tenant_information_section",
+  "tenant",
+  "phone",
+  "column_break_jgyd",
+  "email",
+  "tax_id",
+  "contract_details_section",
+  "monthly_rent_amount",
+  "contract_start_date",
+  "column_break_avom",
+  "contract_end_date",
+  "section_break_kobe",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "shop_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shop Name"
+  },
+  {
+   "fieldname": "shop_number",
+   "fieldtype": "Data",
+   "label": "Shop Number"
+  },
+  {
+   "fieldname": "airport",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Airport",
+   "options": "Airport"
+  },
+  {
+   "fieldname": "area_sqft",
+   "fieldtype": "Float",
+   "label": "Area (sq.ft)"
+  },
+  {
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Available\nOccupied"
+  },
+  {
+   "fieldname": "tenant_information_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Shop Tenant"
+  },
+  {
+   "fieldname": "contract_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Details"
+  },
+  {
+   "fieldname": "monthly_rent_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Monthly Rent Amount"
+  },
+  {
+   "fieldname": "contract_start_date",
+   "fieldtype": "Date",
+   "label": "Contract Start Date"
+  },
+  {
+   "fieldname": "contract_end_date",
+   "fieldtype": "Date",
+   "label": "Contract End Date"
+  },
+  {
+   "fieldname": "section_break_kobe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "AS-",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_ekku",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "tenant.phone",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "column_break_jgyd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "tenant.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fetch_from": "tenant.tax_id",
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "column_break_avom",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "airport.code",
+   "fieldname": "airport_code",
+   "fieldtype": "Data",
+   "label": "Airport Code"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-13 11:24:23.301607",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Airport Shop",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "shop_name"
+}

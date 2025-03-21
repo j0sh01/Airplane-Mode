@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:[naming_series]",
+ "creation": "2025-03-13 09:34:54.755243",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tenant_name",
+  "company_name",
+  "email",
+  "column_break_xgej",
+  "phone",
+  "tax_id",
+  "address",
+  "section_break_opev",
+  "payment_history",
+  "section_break_usbk",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tenant Name"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Phone"
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "payment_history",
+   "fieldtype": "Table",
+   "label": "Payment History",
+   "options": "Tenant Payment History"
+  },
+  {
+   "fieldname": "column_break_xgej",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_opev",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_usbk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "ST-",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-13 11:12:14.109664",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Shop Tenant",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "tenant_name"
+}

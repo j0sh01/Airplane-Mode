@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-03-13 09:58:53.575503",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "default_rent_amount",
+  "enable_rent_reminders",
+  "column_break_sddu",
+  "reminder_days_before",
+  "frequency"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_rent_amount",
+   "fieldtype": "Currency",
+   "label": "Default Rent Amount"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_rent_reminders",
+   "fieldtype": "Check",
+   "label": "Enable Rent Reminders"
+  },
+  {
+   "default": "5",
+   "depends_on": "eval:doc.enable_rent_reminders==1",
+   "fieldname": "reminder_days_before",
+   "fieldtype": "Int",
+   "label": "Send Reminder Days Before Due Date",
+   "options": "Monthly\n3 months\n6 Moth"
+  },
+  {
+   "fieldname": "frequency",
+   "fieldtype": "Select",
+   "label": "Frequency",
+   "options": "Monthly\n3 Months\n6 Months\nYearly"
+  },
+  {
+   "fieldname": "column_break_sddu",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-03-17 23:48:07.256912",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Shop Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

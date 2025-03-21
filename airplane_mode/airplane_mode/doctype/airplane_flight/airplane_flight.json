@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "airplane",
+  "gate_number",
   "column_break_pagp",
   "status",
   "section_break_uatp",
@@ -21,6 +22,8 @@
   "duration",
   "column_break_whfw",
   "time_of_departure",
+  "crew_members_section",
+  "crew",
   "section_break_ltqp",
   "column_break_gggb",
   "is_published",
@@ -150,6 +153,22 @@
   {
    "fieldname": "column_break_xyrv",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "crew_members_section",
+   "fieldtype": "Section Break",
+   "label": "Crew Members"
+  },
+  {
+   "fieldname": "crew",
+   "fieldtype": "Table",
+   "label": "Member",
+   "options": "Flight Crew Member"
+  },
+  {
+   "fieldname": "gate_number",
+   "fieldtype": "Data",
+   "label": "Gate Number"
   }
  ],
  "has_web_view": 1,
@@ -162,7 +181,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2025-02-27 15:46:20.819372",
+ "modified": "2025-03-19 10:36:43.391588",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

@@ -12,7 +12,9 @@ class AirplaneTicket(Document):
         self.calculate_total_amount()
 
     def before_insert(self):
+        self.check_seat_availability()
         self.set_random_seat()
+        # self.set_random_gate()
 
     def on_submit(self):
         self.set_status_completed()
@@ -46,3 +48,20 @@ class AirplaneTicket(Document):
     def before_submit(self):
         if self.status != "Boarded":
             frappe.throw("The Airplane Ticket cannot be submitted unless the status is 'Boarded'.")
+
+    def check_seat_availability(self):
+        flight = frappe.get_doc("Airplane Flight", self.flight)
+        airplane = frappe.get_doc("Airplane", flight.airplane)
+        capacity = airplane.capacity
+        current_tickets = frappe.db.count("Airplane Ticket", {"flight": self.flight})
+        if current_tickets >= capacity:
+            frappe.throw(f"Cannot create ticket. The flight has reached its capacity of {capacity} seats.")
+
+    # def set_random_gate(self):
+    #     random_integer = random.randint(1, 10)
+    #     self.gate_number = f"{random_integer}"
+
+def update_gate_number_in_tickets(flight_name, new_gate_number):
+    tickets = frappe.get_all("Airplane Ticket", filters={"flight": flight_name}, fields=["name"])
+    for ticket in tickets:
+        frappe.db.set_value("Airplane Ticket", ticket.name, "gate_number", new_gate_number)

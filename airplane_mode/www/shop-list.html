@@ -1,0 +1,44 @@
+<!-- airplane_mode/www/shop-list.html -->
+{% if not shops %}
+    <div class="card error">
+        <header>Configuration Required</header>
+        <section>
+            <p>Valid shops exist but cannot be displayed. Please verify:</p>
+            <ol>
+                <li>Guest role has read access to Airport Shop doctype</li>
+                <li>These fields exist in Airport Shop:
+                    <ul>
+                        <li>shop_name (Text)</li>
+                        <li>airport (Link)</li>
+                        <li>status (Select)</li>
+                        <li>area_sqft (Float)</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+    </div>
+{% else %}
+    <!-- Display shops using safe field names -->
+    <div class="flex three-600">
+        {% for shop in shops %}
+        <article class="card">
+            <header>
+                {{ shop.shop_name or 'Unnamed Shop' }}
+                <small>#{{ shop.name }}</small>
+            </header>
+            <section>
+                <div class="flex two">
+                    <div>
+                        <strong>Airport:</strong> 
+                        {{ shop.airport }} ({{ shop.airport_code }})
+                    </div>
+                    <div>
+                        <strong>Area:</strong> 
+                        {{ shop.area_sqft|int }} sq.ft
+                    </div>
+                </div>
+            </section>
+        </article>
+        {% endfor %}
+    </div>
+{% endif %}

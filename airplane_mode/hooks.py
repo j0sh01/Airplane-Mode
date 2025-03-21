@@ -149,6 +149,19 @@ app_license = "mit"
 # ---------------
 
 # scheduler_events = {
+#     "daily": [
+#         "airport_shop_management.airport_shop_management.scheduler_events.monthly.send_rent_reminders",
+#         "airport_shop_management.airport_shop_management.scheduler_events.daily.mark_overdue_payments"
+#     ]
+# }
+
+scheduler_events = {
+    "daily": [
+        "airplane_mode.airport_shop_management.doctype.payment_schedule.payment_schedule.update_overdue_status",
+        "airplane_mode.utils.email_notifications.send_rent_reminders"    
+    ]
+}
+# scheduler_events = {
 # 	"all": [
 # 		"airplane_mode.tasks.all"
 # 	],
@@ -242,3 +255,14 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+website_route_rules = [
+    {"from_route": "/shop-list", "to_route": "shop-list"},
+    # ... other routes
+]
+
+# airplane_mode/hooks.py
+web_include = {
+    "web": [
+        {"type": "css", "path": "www/styles.css"}
+    ]
+}

@@ -9,7 +9,8 @@
   "model",
   "airline",
   "column_break_nqnz",
-  "capacity"
+  "capacity",
+  "initial_audit_completed"
  ],
  "fields": [
   {
@@ -38,11 +39,17 @@
    "label": "Capacity",
    "non_negative": 1,
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "initial_audit_completed",
+   "fieldtype": "Check",
+   "label": "Initial Audit Completed"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-19 14:16:01.409624",
+ "modified": "2025-03-10 09:52:54.725503",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane",
