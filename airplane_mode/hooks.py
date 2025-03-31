@@ -30,6 +30,7 @@ app_license = "mit"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/airplane_mode/css/airplane_mode.css"
+# web_include_css = "/assets/airplane_mode/airplane_mode/css/web_portal.css"
 # web_include_js = "/assets/airplane_mode/js/airplane_mode.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -84,6 +85,7 @@ app_license = "mit"
 
 # before_install = "airplane_mode.install.before_install"
 # after_install = "airplane_mode.install.after_install"
+after_install = "airplane_mode.airport_shop_management.doctype.shop_type.shop_type.after_install"
 
 # Uninstallation
 # ------------
@@ -255,14 +257,26 @@ scheduler_events = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
-website_route_rules = [
-    {"from_route": "/shop-list", "to_route": "shop-list"},
+# website_route_rules = [
+#     {"from_route": "/shop-list", "to_route": "shop-list"},
     # ... other routes
-]
+# ]
 
 # airplane_mode/hooks.py
-web_include = {
-    "web": [
-        {"type": "css", "path": "www/styles.css"}
-    ]
-}
+# web_include = {
+#     "web": [
+#         {"type": "css", "path": "www/styles.css"}
+#     ]
+# }
+
+from airplane_mode.airport_shop_management.controllers.airport_shop_controller import get_shop_context
+
+website_route_rules = [
+    {
+        'from_route': '/',
+        'to_route': 'airplane_mode.airport_shop_management.controllers.airport_shop_controller.get_shop_context',
+        'defaults': {
+            'page': 'index'
+        }
+    }
+]

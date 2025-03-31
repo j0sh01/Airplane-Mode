@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "passenger",
+  "passenger_name",
   "status",
   "column_break_hllj",
   "flight",
@@ -29,6 +30,12 @@
   "column_break_flxt",
   "destination_airport",
   "destination_airport_code",
+  "payment_details_section",
+  "payment_status",
+  "paid_amount",
+  "column_break_paos",
+  "balance_due",
+  "due_date",
   "section_break_5pfm",
   "amended_from"
  ],
@@ -174,17 +181,59 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "flight.gate_number",
    "fieldname": "gate_number",
    "fieldtype": "Data",
-   "label": "Gate Number",
+   "label": "Gate Number"
+  },
+  {
+   "fieldname": "payment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "default": "Unpaid",
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Payment Status",
+   "options": "Unpaid\nPartially Paid\nPaid"
+  },
+  {
+   "default": "0",
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
    "read_only": 1
+  },
+  {
+   "fieldname": "balance_due",
+   "fieldtype": "Currency",
+   "label": "Balance Due",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_paos",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Payment Due Date"
+  },
+  {
+   "fetch_from": "passenger.full_name",
+   "fieldname": "passenger_name",
+   "fieldtype": "Data",
+   "label": "Passenger Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-19 10:47:30.605499",
+ "modified": "2025-03-31 12:47:46.114183",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",

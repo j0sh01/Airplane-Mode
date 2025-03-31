@@ -1,0 +1,148 @@
+{% extends "templates/web_base.html" %}
+
+{% block title %}{{ shop.shop_name }} Details{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <a href="/" class="button pseudo">← Back to List</a>
+    <h1>{{ shop.shop_name }}</h1>
+</div>
+
+<div class="flex two">
+    <!-- Shop Details Card -->
+    <div class="card">
+        <header>
+            <h3>Shop Details</h3>
+        </header>
+        <section>
+            <div class="flex two">
+                <div>
+                    <label>Shop Number</label>
+                    <p>{{ shop.shop_number }}</p>
+                </div>
+                <div>
+                    <label>Airport</label>
+                    <p>{{ shop.airport }} ({{ shop.airport_code }})</p>
+                </div>
+            </div>
+            
+            <div class="flex two">
+                <div>
+                    <label>Shop Type</label>
+                    <p>{{ shop.shop_type }}</p>
+                </div>
+                <div>
+                    <label>Area</label>
+                    <p>{{ shop.area_sqft }} sq.ft</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Status Card -->
+    <div class="card">
+        <header>
+            <h3>Status & Contract</h3>
+        </header>
+        <section>
+            <div class="flex two">
+                <div>
+                    <label>Current Status</label>
+                    <p class="label {{ 'success' if shop.status=='Available' else 'dull' }}">
+                        {{ shop.status }}
+                    </p>
+                </div>
+                <div>
+                    <label>Monthly Rent</label>
+                    <p>{{ frappe.utils.fmt_money(shop.monthly_rent_amount, currency="USD") }}</p>
+                </div>
+            </div>
+            
+            {% if shop.contract_start_date %}
+            <div class="flex two">
+                <div>
+                    <label>Contract Start</label>
+                    <p>{{ frappe.utils.format_date(shop.contract_start_date) }}</p>
+                </div>
+                <div>
+                    <label>Contract End</label>
+                    <p>{{ frappe.utils.format_date(shop.contract_end_date) }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+    </div>
+</div>
+
+{% if shop.status == 'Available' %}
+<div class="card">
+    <header>
+        <h3>Express Interest</h3>
+    </header>
+    <section>
+        <form class="lead-form" method="POST" action="/submit-interest">
+            <input type="hidden" name="shop" value="{{ shop.name }}">
+            
+            <div class="flex two">
+                <div>
+                    <label>Full Name</label>
+                    <input type="text" name="full_name" required>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+            </div>
+            
+            <div class="flex two">
+                <div>
+                    <label>Phone</label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div>
+                    <label>Company</label>
+                    <input type="text" name="company">
+                </div>
+            </div>
+
+            <div>
+                <label>Message</label>
+                <textarea name="message" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="success">Submit Interest</button>
+        </form>
+    </section>
+</div>
+{% endif %}
+
+{% if shop.tenant %}
+<div class="card">
+    <header>
+        <h3>Current Tenant</h3>
+    </header>
+    <section>
+        <div class="flex two">
+            <div>
+                <label>Tenant Name</label>
+                <p>{{ shop.tenant }}</p>
+            </div>
+            <div>
+                <label>Contact Phone</label>
+                <p>{{ shop.phone }}</p>
+            </div>
+        </div>
+        <div class="flex two">
+            <div>
+                <label>Email</label>
+                <p>{{ shop.email }}</p>
+            </div>
+            <div>
+                <label>Tax ID</label>
+                <p>{{ shop.tax_id }}</p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:PAY-{ticket}-{#####}",
+ "creation": "2025-03-31 11:32:46.235704",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_6j8x",
+  "ticket",
+  "column_break_mdbh",
+  "passenger_name",
+  "payment_details_section",
+  "payment_amount",
+  "payment_date",
+  "column_break_qfzu",
+  "payment_method",
+  "section_break_nuwg",
+  "payment_notes",
+  "receipt_number",
+  "received_by",
+  "section_break_mcsq",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_6j8x",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Airplane Ticket Payment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "ticket",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Ticket",
+   "options": "Airplane Ticket"
+  },
+  {
+   "fieldname": "section_break_mcsq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "ticket.passenger_name",
+   "fieldname": "passenger_name",
+   "fieldtype": "Data",
+   "label": "Passenger Name"
+  },
+  {
+   "fieldname": "payment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "fieldname": "payment_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Payment Amount"
+  },
+  {
+   "fieldname": "column_break_mdbh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Payment Date"
+  },
+  {
+   "default": "Cash",
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Payment Method",
+   "options": "\nCash\nBank Transfer\nCheck\nOther"
+  },
+  {
+   "fieldname": "column_break_qfzu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_nuwg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_notes",
+   "fieldtype": "Small Text",
+   "label": "Payment Notes"
+  },
+  {
+   "fieldname": "receipt_number",
+   "fieldtype": "Data",
+   "label": "Receipt Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "received_by",
+   "fieldtype": "Data",
+   "label": "Received By"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-03-31 12:48:14.844491",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Airplane Ticket Payment",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

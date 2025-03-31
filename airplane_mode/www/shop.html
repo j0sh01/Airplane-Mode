@@ -1,0 +1,48 @@
+{% extends "templates/web_base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Available Airport Shops</h1>
+</div>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Shop Name</th>
+                <th>Airport</th>
+                <th>Status</th>
+                <th>Area (sq.ft)</th>
+                <th>Monthly Rent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shop in shops %}
+            <tr class="clickable-row" data-href="/{{ shop.name }}">
+                <td>{{ shop.shop_name }}</td>
+                <td>{{ shop.airport }} ({{ shop.airport_code }})</td>
+                <td>
+                    <span class="label {{ 'success' if shop.status=='Available' else 'dull' }}">
+                        {{ shop.status }}
+                    </span>
+                </td>
+                <td>{{ shop.area_sqft | int }}</td>
+                <td>{{ frappe.utils.fmt_money(shop.monthly_rent_amount, currency="USD") }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.clickable-row').forEach(row => {
+        row.addEventListener('click', () => {
+            window.location.href = row.dataset.href;
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -10,6 +10,13 @@ class AirportShop(Document):
         self.update_shop_status()
         self.set_airport_code()
         self.rent_amount()
+        self.validate_shop_type()
+
+    def validate_shop_type(self):
+        if self.shop_type:
+            shop_type = frappe.get_doc("Shop Type", self.shop_type)
+            if not shop_type.enabled:
+                frappe.throw(_("Shop Type {0} is disabled").format(self.shop_type))     
         
     def on_update(self):
         if self.has_value_changed('tenant') or self.has_value_changed('contract_start_date') or self.has_value_changed('contract_end_date'):
@@ -73,3 +80,5 @@ class AirportShop(Document):
     def rent_amount(self):
         rent = frappe.get_doc("Shop Settings")
         self.monthly_rent_amount = rent.default_rent_amount
+
+ 

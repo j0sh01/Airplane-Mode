@@ -166,6 +166,7 @@
    "options": "Flight Crew Member"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "gate_number",
    "fieldtype": "Data",
    "label": "Gate Number"
@@ -181,7 +182,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2025-03-19 10:36:43.391588",
+ "modified": "2025-03-31 11:09:35.484443",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

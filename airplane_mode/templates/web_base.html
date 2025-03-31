@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Airport Shops Portal{% endblock %}</title>
+    <link rel="stylesheet" href="/airplane_mode/airplane_mode/public/css/web_portal.css">
+</head>
+<body>
+    <nav>
+        <div class="brand">
+            <a href="/shop">Airport Shops Portal</a>
+        </div>
+        <div class="menu">
+            <a href="/" class="button pseudo">Home</a>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 3em; padding: 1em;">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

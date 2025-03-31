@@ -11,6 +11,14 @@ class AirplaneTicket(Document):
         self.remove_duplicate_add_ons()
         self.calculate_total_amount()
 
+        if not self.paid_amount:
+            self.paid_amount = 0
+
+        self.balance_due = self.total_amount - self.paid_amount
+
+        if not self.due_date:
+            self.due_date = frappe.utils.add_days(self.departure_date, 1)    
+
     def before_insert(self):
         self.check_seat_availability()
         self.set_random_seat()
@@ -18,6 +26,7 @@ class AirplaneTicket(Document):
 
     def on_submit(self):
         self.set_status_completed()
+        self.update_payment_status()
 
     def calculate_total_amount(self):
         total_add_ons = sum([item.amount for item in self.add_ons])
@@ -56,6 +65,28 @@ class AirplaneTicket(Document):
         current_tickets = frappe.db.count("Airplane Ticket", {"flight": self.flight})
         if current_tickets >= capacity:
             frappe.throw(f"Cannot create ticket. The flight has reached its capacity of {capacity} seats.")
+
+    def update_payment_status(self):
+        if self.total_amount <= 0:
+            return
+            
+        if self.paid_amount >= self.total_amount:
+            self.payment_status = "Paid"
+        elif self.paid_amount > 0:
+            self.payment_status = "Partially Paid"
+        else:
+            self.payment_status = "Unpaid"        
+
+    @frappe.whitelist()
+    def get_payment_history(self):
+        """Get list of all payments for this ticket"""
+        payments = frappe.get_all(
+            "Airplane Ticket Payment",
+            filters={"ticket": self.name, "docstatus": 1},
+            fields=["name", "payment_date", "payment_amount", "payment_method", "receipt_number"],
+            order_by="payment_date desc"
+        )
+        return payments       
 
     # def set_random_gate(self):
     #     random_integer = random.randint(1, 10)
