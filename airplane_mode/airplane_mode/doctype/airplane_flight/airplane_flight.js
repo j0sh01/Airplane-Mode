@@ -17,3 +17,41 @@ frappe.ui.form.on('Airplane Flight', {
         }
     }
 });
+
+
+frappe.ui.form.on('Airplane Flight', {
+    refresh(frm) {
+        if (!frm.is_new()) {
+            frm.add_custom_button('Update Gate Number', () => {
+                frappe.prompt(
+                    [
+                        {
+                            fieldname: 'new_gate_number',
+                            label: 'New Gate Number',
+                            fieldtype: 'Data',
+                            reqd: 1,
+                            default: frm.doc.gate_number
+                        }
+                    ],
+                    (values) => {
+                        frappe.call({
+                            method: 'airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight.update_gate_and_tickets',
+                            args: {
+                                flight_name: frm.doc.name,
+                                new_gate_number: values.new_gate_number
+                            },
+                            callback: function (r) {
+                                if (!r.exc) {
+                                    frappe.msgprint(__('Gate number update initiated in background.'));
+                                    frm.reload_doc();
+                                }
+                            }
+                        });
+                    },
+                    __('Update Gate Number'),
+                    __('Update')
+                );
+            });
+        }
+    }
+});

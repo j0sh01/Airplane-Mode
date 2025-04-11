@@ -139,6 +139,13 @@ after_install = "airplane_mode.airport_shop_management.doctype.shop_type.shop_ty
 # ---------------
 # Hook on document methods and events
 
+
+doc_events = {
+    "Airplane Flight": {
+        "on_update": "airplane_mode.airplane_flight.doctype.airplane_flight.airplane_flight.update_gate_number_in_tickets"
+    }
+}
+
 # doc_events = {
 # 	"*": {
 # 		"on_update": "method",
@@ -149,13 +156,6 @@ after_install = "airplane_mode.airport_shop_management.doctype.shop_type.shop_ty
 
 # Scheduled Tasks
 # ---------------
-
-# scheduler_events = {
-#     "daily": [
-#         "airport_shop_management.airport_shop_management.scheduler_events.monthly.send_rent_reminders",
-#         "airport_shop_management.airport_shop_management.scheduler_events.daily.mark_overdue_payments"
-#     ]
-# }
 
 scheduler_events = {
     "daily": [
